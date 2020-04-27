@@ -1,0 +1,6342 @@
+library (CNT_TFT_psuedo_Standard_Library_3.6V_25C_TYP_X1) {
+  /* Models written by Liberate 15.1.4.070 from Cadence Design Systems, Inc. on Do 18. Jul 00:44:19 CEST 2019 */
+  comment : "";
+  date : "$Date: Thu Jul 18 00:41:07 2019 $";
+  revision : "1.0";
+  delay_model : table_lookup;
+  capacitive_load_unit (1,pf);
+  current_unit : "1mA";
+  leakage_power_unit : "1nW";
+  pulling_resistance_unit : "1kohm";
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  voltage_map (VDD, 3.6);
+  voltage_map (VSS, 0);
+  voltage_map (VIN, 3.6);
+  voltage_map (VSS_int, -3);
+  voltage_map (GND, 0);
+  default_cell_leakage_power : 0;
+  default_fanout_load : 1;
+  default_max_transition : 1e+04;
+  default_output_pin_cap : 0;
+  in_place_swap_mode : match_footprint;
+  input_threshold_pct_fall : 50;
+  input_threshold_pct_rise : 50;
+  nom_process : 1;
+  nom_temperature : 25;
+  nom_voltage : 3.6;
+  output_threshold_pct_fall : 50;
+  output_threshold_pct_rise : 50;
+  slew_derate_from_library : 0.5;
+  slew_lower_threshold_pct_fall : 40;
+  slew_lower_threshold_pct_rise : 40;
+  slew_upper_threshold_pct_fall : 60;
+  slew_upper_threshold_pct_rise : 60;
+  operating_conditions (TT) {
+    process : 1;
+    temperature : 25;
+    voltage : 3.6;
+  }
+  default_operating_conditions : TT;
+  lu_table_template (constraintX1_3x3) {
+    variable_1 : constrained_pin_transition;
+    variable_2 : related_pin_transition;
+    index_1 ("1000, 2000, 5000");
+    index_2 ("1000, 2000, 5000");
+  }
+  lu_table_template (delayX1_3x3) {
+    variable_1 : input_net_transition;
+    variable_2 : total_output_net_capacitance;
+    index_1 ("10, 20, 50");
+    index_2 ("1, 5, 10");
+  }
+  lu_table_template (mpw_constraintX1_3x3) {
+    variable_1 : constrained_pin_transition;
+    index_1 ("1000, 2000, 5000");
+  }
+  power_lut_template (passive_powerX1_3x1) {
+    variable_1 : input_transition_time;
+    index_1 ("10, 20, 50");
+  }
+  power_lut_template (powerX1_3x3) {
+    variable_1 : input_transition_time;
+    variable_2 : total_output_net_capacitance;
+    index_1 ("10, 20, 50");
+    index_2 ("1, 5, 10");
+  }
+  cell (DFFNRX1_psuedo) {
+    area : 42000;
+    cell_leakage_power : 92884;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * D * Q_bar * RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * Q_bar * RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * D * Q_bar * RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * Q_bar * RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * D * Q_bar * !RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * Q_bar * !RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * D * Q_bar * !RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * Q_bar * !RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * D * !Q_bar * RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * !Q_bar * RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * D * !Q_bar * RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * !Q_bar * RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * D * !Q_bar * !RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * !Q_bar * !RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * D * !Q_bar * !RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * !Q_bar * !RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * !D * Q_bar * RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * Q_bar * RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * !D * Q_bar * RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * Q_bar * RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * !D * Q_bar * !RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * Q_bar * !RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * !D * Q_bar * !RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * Q_bar * !RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * !D * !Q_bar * RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * !Q_bar * RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * !D * !Q_bar * RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * !Q_bar * RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * !D * !Q_bar * !RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * !Q_bar * !RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(CP * !D * !Q_bar * !RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * !Q_bar * !RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * D * Q_bar * RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * Q_bar * RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * D * Q_bar * RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * Q_bar * RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * D * Q_bar * !RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * Q_bar * !RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * D * Q_bar * !RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * Q_bar * !RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * D * !Q_bar * RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * !Q_bar * RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * D * !Q_bar * RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * !Q_bar * RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * D * !Q_bar * !RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * !Q_bar * !RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * D * !Q_bar * !RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * !Q_bar * !RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * !D * Q_bar * RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * Q_bar * RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * !D * Q_bar * RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * Q_bar * RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * !D * Q_bar * !RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * Q_bar * !RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * !D * Q_bar * !RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * Q_bar * !RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * !D * !Q_bar * RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * !Q_bar * RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * !D * !Q_bar * RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * !Q_bar * RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * !D * !Q_bar * !RST_N * Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * !Q_bar * !RST_N * Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      when : "(!CP * !D * !Q_bar * !RST_N * !Q)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * !Q_bar * !RST_N * !Q)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 92884;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Q) {
+      direction : output;
+      function : "IQ";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "CP";
+        timing_sense : non_unate;
+        timing_type : rising_edge;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        sdf_cond : "CP";
+        timing_sense : negative_unate;
+        timing_type : combinational_rise;
+        when : "CP";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        sdf_cond : "(~CP & RST_N)";
+        timing_sense : negative_unate;
+        timing_type : combinational_rise;
+        when : "(!CP * RST_N)";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        sdf_cond : "(~CP & ~RST_N)";
+        timing_sense : negative_unate;
+        timing_type : combinational_rise;
+        when : "(!CP * !RST_N)";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        sdf_cond : "(CP & D)";
+        timing_sense : positive_unate;
+        timing_type : clear;
+        when : "(CP * D)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        sdf_cond : "(CP & ~D)";
+        timing_sense : positive_unate;
+        timing_type : clear;
+        when : "(CP * !D)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        sdf_cond : "(~CP & D)";
+        timing_sense : positive_unate;
+        timing_type : clear;
+        when : "(!CP * D)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        sdf_cond : "(~CP & ~D)";
+        timing_sense : positive_unate;
+        timing_type : clear;
+        when : "(!CP * !D)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        timing_sense : positive_unate;
+        timing_type : clear;
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CP";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "7.68292e+04, 7.68291e+04, 7.68291e+04", \
+            "7.6829e+04, 7.6829e+04, 7.68292e+04", \
+            "7.6829e+04, 7.68291e+04, 7.68288e+04" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "8.27152e+04, 8.27152e+04, 8.27152e+04", \
+            "8.27152e+04, 8.27152e+04, 8.27152e+04", \
+            "8.27152e+04, 8.27152e+04, 8.27152e+04" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CP";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "7.68293e+04, 7.68291e+04, 7.68292e+04", \
+            "7.68291e+04, 7.68291e+04, 7.68293e+04", \
+            "7.6829e+04, 7.68291e+04, 7.68289e+04" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "8.27152e+04, 8.27152e+04, 8.27152e+04", \
+            "8.27152e+04, 8.27152e+04, 8.27152e+04", \
+            "8.27152e+04, 8.27152e+04, 8.27152e+04" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(CP * D)";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "10963.1, 10896.9, 10900.9", \
+            "10914.3, 10896.7, 10902", \
+            "10894.6, 10896.4, 10903.6" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(CP * D)";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "10825.5, 10830.1, 10835.3", \
+            "10825.4, 10830, 10835.3", \
+            "10825.2, 10829.8, 10835" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(CP * !D)";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "10693.1, 10651.8, 10657.3", \
+            "10631, 10652.4, 10656.6", \
+            "10648.1, 10653, 10658.2" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(CP * !D)";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "10586.9, 10591.5, 10596.6", \
+            "10587.1, 10591.6, 10596.7", \
+            "10587.4, 10591.9, 10597" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(!CP * D)";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "11175.5, 11121.8, 11130.1", \
+            "11115.5, 11122.6, 11129.4", \
+            "11120.1, 11122.4, 11129.8" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(!CP * D)";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "11055.2, 11060.9, 11068.3", \
+            "11055.1, 11060.9, 11068.2", \
+            "11054.9, 11060.7, 11068" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(!CP * !D)";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "10974.1, 11064, 11071", \
+            "11053.4, 11060.4, 11068.6", \
+            "11051, 11060.6, 11067.9" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(!CP * !D)";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "10995.9, 11001.8, 11009.3", \
+            "10995.8, 11001.7, 11009.3", \
+            "10995.7, 11001.7, 11009.2" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "11175.5, 11121.8, 11130.1", \
+            "11115.5, 11122.6, 11129.4", \
+            "11120.1, 11122.4, 11129.8" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "11055.2, 11060.9, 11068.3", \
+            "11055.1, 11060.9, 11068.2", \
+            "11054.9, 11060.7, 11068" \
+          );
+        }
+      }
+    }
+    pin (Q_bar) {
+      direction : output;
+      function : "IQ_bar";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "CP";
+        timing_sense : non_unate;
+        timing_type : rising_edge;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q";
+        sdf_cond : "(CP & RST_N)";
+        timing_sense : negative_unate;
+        timing_type : combinational_rise;
+        when : "(CP * RST_N)";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q";
+        sdf_cond : "(~CP & RST_N)";
+        timing_sense : negative_unate;
+        timing_type : combinational_rise;
+        when : "(!CP * RST_N)";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2100.94, 3901.04, 7100.1", \
+            "2100.72, 3901.17, 7100.4", \
+            "2100.06, 3901.92, 7100.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        sdf_cond : "(CP & D)";
+        timing_sense : negative_unate;
+        timing_type : preset;
+        when : "(CP * D)";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        sdf_cond : "(CP & ~D)";
+        timing_sense : negative_unate;
+        timing_type : preset;
+        when : "(CP * !D)";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        sdf_cond : "(~CP & D)";
+        timing_sense : negative_unate;
+        timing_type : preset;
+        when : "(!CP * D)";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        sdf_cond : "(~CP & ~D)";
+        timing_sense : negative_unate;
+        timing_type : preset;
+        when : "(!CP * !D)";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "RST_N";
+        timing_sense : negative_unate;
+        timing_type : preset;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2029.94, 3817.04, 7042.1", \
+            "2033.72, 3818.17, 7043.4", \
+            "2031.06, 3816.92, 7042.5" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CP";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "3913.66, 3916.15, 3916.54", \
+            "3915.8, 3917.62, 3918.01", \
+            "3914.83, 3916.37, 3918.14" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "7.68292e+04, 7.68292e+04, 7.68292e+04", \
+            "7.6829e+04, 7.68288e+04, 7.68292e+04", \
+            "7.68291e+04, 7.68293e+04, 7.68286e+04" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CP";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "3957.24, 3958, 3958.02", \
+            "3957.11, 3957.88, 3957.91", \
+            "3956.89, 3957.63, 3957.63" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "7.68293e+04, 7.68292e+04, 7.68292e+04", \
+            "7.6829e+04, 7.68288e+04, 7.68293e+04", \
+            "7.68291e+04, 7.68294e+04, 7.68287e+04" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(CP * D)";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "181.603, 183.99, 187.216", \
+            "180.674, 183.005, 177.008", \
+            "180.045, 181.53, 178.356" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(CP * D)";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "117.068, 111.963, 105.441", \
+            "116.666, 111.56, 105.038", \
+            "115.618, 110.495, 103.954" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(CP * !D)";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "185.086, 187.743, 190.785", \
+            "184.425, 186.546, 196.846", \
+            "184.082, 179.634, 188.727" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(CP * !D)";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "123.705, 118.835, 112.607", \
+            "123.427, 118.562, 112.331", \
+            "122.718, 117.835, 111.59" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(!CP * D)";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "180.701, 183.148, 186.101", \
+            "179.923, 182.028, 167.839", \
+            "179.553, 170.545, 184.644" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(!CP * D)";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "118.837, 113.819, 107.454", \
+            "118.572, 113.562, 107.193", \
+            "117.891, 112.871, 106.49" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(!CP * !D)";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "178.736, 181.336, 184.212", \
+            "178.487, 180.457, 183.961", \
+            "178.131, 180.168, 186.204" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        when : "(!CP * !D)";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "120.073, 115.228, 109.078", \
+            "119.897, 115.058, 108.908", \
+            "119.468, 114.62, 108.459" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "185.086, 187.743, 190.785", \
+            "184.425, 186.546, 196.846", \
+            "184.082, 179.634, 188.727" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "RST_N";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "123.705, 118.835, 112.607", \
+            "123.427, 118.562, 112.331", \
+            "122.718, 117.835, 111.59" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+    }
+    pin (CP) {
+      clock : true;
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 5.63955;
+      rise_capacitance : 5.63955;
+      rise_capacitance_range (5.50827, 5.79557);
+      fall_capacitance : 5.96136;
+      fall_capacitance_range (5.7046, 6.2585);
+      internal_power () {
+        when : "(D * RST_N * Q * !Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03658e+04, 6.03658e+04, 6.03658e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.01897e+04, 6.01897e+04, 6.01897e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(D * RST_N * Q * !Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03659e+04, 6.03659e+04, 6.03659e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.01897e+04, 6.01897e+04, 6.01897e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(D * RST_N * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.01897e+04, 6.01897e+04, 6.01897e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(D * RST_N * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.01897e+04, 6.01897e+04, 6.01897e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(D * !RST_N * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.07036e+04, 6.07036e+04, 6.07036e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0449e+04, 6.0449e+04, 6.0449e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(D * !RST_N * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.07036e+04, 6.07036e+04, 6.07036e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0449e+04, 6.0449e+04, 6.0449e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!D * RST_N * Q * !Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05863e+04, 6.05863e+04, 6.05863e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!D * RST_N * Q * !Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05863e+04, 6.05863e+04, 6.05863e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!D * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0543e+04, 6.0543e+04, 6.0543e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05863e+04, 6.05863e+04, 6.05863e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!D * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0543e+04, 6.0543e+04, 6.0543e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05863e+04, 6.05863e+04, 6.05863e+04" \
+          );
+        }
+      }
+    }
+    pin (D) {
+      direction : input;
+      related_power_pin : VDD;
+      capacitance : 2.81627;
+      rise_capacitance : 2.81627;
+      rise_capacitance_range (2.75793, 2.88553);
+      fall_capacitance : 3.06971;
+      fall_capacitance_range (2.892, 3.28362);
+      internal_power () {
+        when : "(CP * RST_N * Q * !Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03658e+04, 6.03658e+04, 6.03658e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0543e+04, 6.0543e+04, 6.0543e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(CP * RST_N * Q * !Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03658e+04, 6.03658e+04, 6.03658e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0543e+04, 6.0543e+04, 6.0543e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(CP * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03658e+04, 6.03658e+04, 6.03658e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0543e+04, 6.0543e+04, 6.0543e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(CP * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03658e+04, 6.03658e+04, 6.03658e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0543e+04, 6.0543e+04, 6.0543e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!CP * RST_N * Q * !Q_bar) + (!CP * RST_N * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.01897e+04, 6.01897e+04, 6.01897e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05863e+04, 6.05863e+04, 6.05863e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!CP * RST_N * Q * !Q_bar) + (!CP * RST_N * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.01897e+04, 6.01897e+04, 6.01897e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05863e+04, 6.05863e+04, 6.05863e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!CP * !RST_N * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0449e+04, 6.0449e+04, 6.0449e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03923e+04, 6.03923e+04, 6.03923e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!CP * !RST_N * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0449e+04, 6.0449e+04, 6.0449e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03923e+04, 6.03923e+04, 6.03923e+04" \
+          );
+        }
+      }
+    }
+    pin (RST_N) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 8.48129;
+      rise_capacitance : 8.48129;
+      rise_capacitance_range (8.28659, 8.69973);
+      fall_capacitance : 9.05127;
+      fall_capacitance_range (8.53189, 9.86556);
+      internal_power () {
+        when : "(CP * !Q * Q_bar) + (!CP * !D * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03659e+04, 6.03659e+04, 6.03659e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.07036e+04, 6.07036e+04, 6.07036e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(CP * !Q * Q_bar) + (!CP * !D * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.03659e+04, 6.03659e+04, 6.03659e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.07036e+04, 6.07036e+04, 6.07036e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!CP * D * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.01897e+04, 6.01897e+04, 6.01897e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0449e+04, 6.0449e+04, 6.0449e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!CP * D * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.01897e+04, 6.01897e+04, 6.01897e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.0449e+04, 6.0449e+04, 6.0449e+04" \
+          );
+        }
+      }
+    }
+    ff (IQ,IQ_bar) {
+      clear : "!RST_N";
+      clocked_on : "CP";
+      next_state : "D";
+      power_down_function : "(!VDD) + (VSS)";
+    }
+  }
+  cell (DFFX1_psuedo) {
+    area : 18000;
+    cell_leakage_power : 40356;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(CP * D * Q * Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * Q * Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(CP * D * Q * !Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * Q * !Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(CP * D * !Q * Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * !Q * Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(CP * D * !Q * !Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * D * !Q * !Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(CP * !D * Q * Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * Q * Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(CP * !D * Q * !Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * Q * !Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(CP * !D * !Q * Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * !Q * Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(CP * !D * !Q * !Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(CP * !D * !Q * !Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(!CP * D * Q * Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * Q * Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(!CP * D * Q * !Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * Q * !Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(!CP * D * !Q * Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * !Q * Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(!CP * D * !Q * !Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * D * !Q * !Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(!CP * !D * Q * Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * Q * Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(!CP * !D * Q * !Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * Q * !Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(!CP * !D * !Q * Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * !Q * Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      when : "(!CP * !D * !Q * !Q_bar)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!CP * !D * !Q * !Q_bar)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 40356;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Q) {
+      direction : output;
+      function : "IQ";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "CP";
+        timing_sense : non_unate;
+        timing_type : rising_edge;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "D";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        sdf_cond : "(CP & D)";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "(CP * D)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        sdf_cond : "~CP";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "!CP";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CP";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "908.866, 925.461, 925.509", \
+            "921.576, 923.205, 922.51", \
+            "922.674, 922.613, 922.69" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2181.6, 2186.32, 2187.51", \
+            "2184.01, 2182.56, 2177.54", \
+            "2185.01, 2182.5, 2178.54" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CP";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "966.571, 969.212, 972.017", \
+            "966.485, 969.122, 971.925", \
+            "966.338, 968.974, 971.77" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2225.76, 2225.3, 2224.69", \
+            "2225.68, 2225.24, 2224.61", \
+            "2225.56, 2225.12, 2224.5" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "D";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "772.411, 770.293, 767.16", \
+            "772.352, 769.758, 766.591", \
+            "772.456, 770.217, 767.048" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2317.85, 2315.89, 2313.4", \
+            "2317.48, 2315.5, 2313.09", \
+            "2318.54, 2316.53, 2314.1" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "D";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "816.402, 814.096, 809.99", \
+            "816.299, 813.99, 809.883", \
+            "816.385, 814.073, 809.95" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2273.92, 2271.91, 2269.44", \
+            "2273.64, 2271.66, 2269.19", \
+            "2273.03, 2271.02, 2268.54" \
+          );
+        }
+      }
+    }
+    pin (Q_bar) {
+      direction : output;
+      function : "IQ_bar";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "CP";
+        timing_sense : non_unate;
+        timing_type : rising_edge;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q";
+        sdf_cond : "(CP & ~D)";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "(CP * !D)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q";
+        sdf_cond : "~CP";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "!CP";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1438.5, 1898.51, 2556.46", \
+            "1431.9, 1891.95, 2550.62", \
+            "1424.23, 1884.38, 2542.72" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1501.5, 1901.51, 2600.46", \
+            "1501.9, 1901.95, 2600.62", \
+            "1501.23, 1901.38, 2600.72" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CP";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1144.45, 1163.4, 1166.16", \
+            "1161.95, 1162.74, 1163.32", \
+            "1162.45, 1162.61, 1162.85" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1766.9, 1741.79, 1754.21", \
+            "1755.97, 1752.5, 1748.37", \
+            "1754.36, 1750.95, 1747.1" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "CP";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1202.75, 1205.45, 1208.34", \
+            "1202.67, 1205.38, 1208.26", \
+            "1202.55, 1205.25, 1208.13" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1798.17, 1797.62, 1796.93", \
+            "1798.09, 1797.53, 1796.81", \
+            "1797.94, 1797.41, 1796.69" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "D";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1037.64, 1035.57, 1032.57", \
+            "1037.19, 1035.23, 1032.22", \
+            "1038.35, 1036.23, 1033.22" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1840.54, 1842.24, 1829.55", \
+            "1840.03, 1837.11, 1835.14", \
+            "1840.51, 1837.98, 1835.3" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "D";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "993.734, 991.53, 987.575", \
+            "993.48, 991.272, 987.317", \
+            "992.837, 990.625, 986.662" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1884.44, 1882.26, 1879.62", \
+            "1884.34, 1882.16, 1879.53", \
+            "1884.44, 1882.25, 1879.61" \
+          );
+        }
+      }
+    }
+    pin (CP) {
+      clock : true;
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 5.609;
+      rise_capacitance : 5.609;
+      rise_capacitance_range (5.41295, 5.81948);
+      fall_capacitance : 5.90621;
+      fall_capacitance_range (5.60167, 6.24077);
+      internal_power () {
+        when : "(D * Q * !Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "5.9231e+04, 5.9231e+04, 5.9231e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05784e+04, 6.05784e+04, 6.05784e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(D * Q * !Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "5.92311e+04, 5.92311e+04, 5.92311e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05784e+04, 6.05784e+04, 6.05784e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!D * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "7.30036e+04, 7.30036e+04, 7.30036e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "7.40049e+04, 7.40049e+04, 7.40049e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!D * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "7.30037e+04, 7.30037e+04, 7.30037e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "7.40048e+04, 7.40048e+04, 7.40048e+04" \
+          );
+        }
+      }
+    }
+    pin (D) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 5.50739;
+      rise_capacitance : 5.50739;
+      rise_capacitance_range (5.31018, 5.72464);
+      fall_capacitance : 6.14528;
+      fall_capacitance_range (5.54873, 6.92903);
+      internal_power () {
+        when : "(!CP * Q * !Q_bar) + (!CP * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05783e+04, 6.05783e+04, 6.05783e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "7.40786e+04, 7.40786e+04, 7.40786e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!CP * Q * !Q_bar) + (!CP * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "6.05784e+04, 6.05784e+04, 6.05784e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "7.40785e+04, 7.40785e+04, 7.40785e+04" \
+          );
+        }
+      }
+    }
+    latch (IQ,IQ_bar) {
+      data_in : "D";
+      enable : "CP";
+      power_down_function : "(!VDD) + (VSS)";
+    }
+  }
+  cell (INVX1_psuedo) {
+    area : 2000;
+    cell_leakage_power : 7421.05;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 3784.11;
+      when : "(A * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 3784.1;
+      when : "(A * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 14694.9;
+      when : "(!A * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 7421.05;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Y) {
+      direction : output;
+      function : "!A";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "23.6423, 35.7727, 49.9954", \
+            "27.6686, 38.8419, 52.6998", \
+            "20.0598, 40.8269, 60.0766" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "10.022, 26.0302, 46.0436", \
+            "10.0235, 26.0299, 46.0439", \
+            "24.5333, 43.5893, 55.7654" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "574.02, 1389.22, 2323.39", \
+            "571.599, 1375.83, 2308.11", \
+            "577.718, 1350.37, 2271.99" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "578.161, 1501.61, 2655.89", \
+            "577.966, 1501.6, 2655.87", \
+            "578.013, 1501.56, 2655.85" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "57.5919, 60.8861, 65.088", \
+            "58.3277, 60.3651, 64.4477", \
+            "56.2756, 62.0274, 63.4124" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "52.0857, 52.1589, 55.0469", \
+            "50.3808, 53.1348, 55.1317", \
+            "51.2689, 53.6874, 55.4482" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "12.6261, 12.2595, 11.6631", \
+            "12.2084, 11.8527, 11.2619", \
+            "11.2805, 10.8089, 10.1629" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "95.2002, 102.523, 108.983", \
+            "95.3274, 102.333, 108.793", \
+            "96.2771, 102.335, 108.577" \
+          );
+        }
+      }
+    }
+    pin (A) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.75979;
+      rise_capacitance : 2.75979;
+      rise_capacitance_range (2.47442, 2.89632);
+      fall_capacitance : 3.14355;
+      fall_capacitance_range (2.75255, 3.61024);
+    }
+  }
+  cell (LATCHX1_psuedo) {
+    area : 6000;
+    cell_leakage_power : 228852;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 21854.4;
+      when : "(Q * Q_bar * R * S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(Q * Q_bar * R * S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      when : "(Q * Q_bar * R * !S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(Q * Q_bar * R * !S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      when : "(Q * Q_bar * !R * S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(Q * Q_bar * !R * S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 435849;
+      when : "(Q * Q_bar * !R * !S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(Q * Q_bar * !R * !S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 21854.4;
+      when : "(Q * !Q_bar * R * S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(Q * !Q_bar * R * S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      when : "(Q * !Q_bar * R * !S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(Q * !Q_bar * R * !S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      when : "(Q * !Q_bar * !R * S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(Q * !Q_bar * !R * S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 435849;
+      when : "(Q * !Q_bar * !R * !S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(Q * !Q_bar * !R * !S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 21854.4;
+      when : "(!Q * Q_bar * R * S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!Q * Q_bar * R * S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      when : "(!Q * Q_bar * R * !S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!Q * Q_bar * R * !S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      when : "(!Q * Q_bar * !R * S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!Q * Q_bar * !R * S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 435849;
+      when : "(!Q * Q_bar * !R * !S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!Q * Q_bar * !R * !S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 21854.4;
+      when : "(!Q * !Q_bar * R * S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!Q * !Q_bar * R * S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      when : "(!Q * !Q_bar * R * !S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!Q * !Q_bar * R * !S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      when : "(!Q * !Q_bar * !R * S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!Q * !Q_bar * !R * S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 435849;
+      when : "(!Q * !Q_bar * !R * !S)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!Q * !Q_bar * !R * !S)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 228852;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Q) {
+      direction : output;
+      function : "!R";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "Q_bar";
+        sdf_cond : "(~R & S)";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "(!R * S)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1222.92, 1979.16, 2858.5", \
+            "1219.4, 1975.08, 2854.69", \
+            "1212.72, 1961.21, 2841.86" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1262.25, 2165.7, 3299.01", \
+            "1262.25, 2165.7, 3299.06", \
+            "1262.33, 2165.7, 3299.01" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        sdf_cond : "(~R & ~S)";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "(!R * !S)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1208.42, 1956.61, 2821.07", \
+            "1206.43, 1953.64, 2821.2", \
+            "1201.38, 1942.64, 2810.1" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1253.29, 2160.73, 3295.61", \
+            "1253.25, 2160.73, 3295.63", \
+            "1253.3, 2160.77, 3295.63" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q_bar";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "105.788, 130.869, 160.305", \
+            "108.296, 133.321, 162.595", \
+            "117.154, 141.801, 170.682" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "71.4112, 124.107, 189.977", \
+            "71.4112, 124.093, 189.959", \
+            "71.41, 124.095, 189.959" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1222.92, 1979.16, 2858.5", \
+            "1219.4, 1975.08, 2854.69", \
+            "1212.72, 1961.21, 2841.86" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1262.25, 2165.7, 3299.01", \
+            "1262.25, 2165.7, 3299.06", \
+            "1262.33, 2165.7, 3299.01" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "R";
+        sdf_cond : "S";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "S";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1234.92, 2029.23, 2905.6", \
+            "1222.66, 2009.96, 2883.06", \
+            "1210.1, 1988.12, 2858.98" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1884.99, 2618.63, 3736.73", \
+            "1875.5, 2616.02, 3735.69", \
+            "1859.51, 2612.22, 3735.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "R";
+        sdf_cond : "~S";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "!S";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2118.36, 2840.02, 3661.17", \
+            "2104.25, 2816.93, 3634.4", \
+            "2090.99, 2791.63, 3607.44" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1369.25, 2240.12, 3377.26", \
+            "1368.58, 2238.91, 3376.96", \
+            "1368.79, 2240.16, 3376.41" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "R";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "70.4302, 138.761, 202.212", \
+            "74.502, 142.766, 206.254", \
+            "78.9225, 146.473, 210.077" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "112.06, 171.63, 249.537", \
+            "111.584, 171.563, 249.475", \
+            "107.031, 171.226, 249.366" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2118.36, 2840.02, 3661.17", \
+            "2104.25, 2816.93, 3634.4", \
+            "2090.99, 2791.63, 3607.44" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1369.25, 2240.12, 3377.26", \
+            "1368.58, 2238.91, 3376.96", \
+            "1368.79, 2240.16, 3376.41" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "S";
+        timing_sense : positive_unate;
+        timing_type : combinational_rise;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1012.12, 1417.02, 1834.88", \
+            "997.631, 1392.65, 1806.82", \
+            "984.686, 1367.04, 1778.1" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "731.175, 977.58, 1365", \
+            "731.571, 981.654, 1368.88", \
+            "732.119, 985.534, 1374.5" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "R";
+        when : "S";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "197.333, 194.808, 195.227", \
+            "192.432, 194.479, 195.153", \
+            "193.514, 195.299, 195.053" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "R";
+        when : "S";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "244.273, 249.282, 253.737", \
+            "244.248, 249.059, 253.446", \
+            "244.815, 249.356, 253.714" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "R";
+        when : "!S";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "376.628, 372.256, 366.75", \
+            "376.544, 372.261, 366.732", \
+            "376.607, 372.294, 366.795" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "R";
+        when : "!S";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "395.646, 393.808, 391.448", \
+            "395.572, 393.752, 391.407", \
+            "395.564, 393.77, 391.433" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "R";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "118.757, 121.188, 124.519", \
+            "118.348, 120.681, 124.111", \
+            "117.332, 119.527, 123.144" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "376.628, 372.256, 366.75", \
+            "376.544, 372.261, 366.732", \
+            "376.607, 372.294, 366.795" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "R";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "67.1637, 62.5892, 57.9172", \
+            "66.7006, 62.1118, 57.4411", \
+            "65.6379, 60.9574, 56.2774" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "395.646, 393.808, 391.448", \
+            "395.572, 393.752, 391.407", \
+            "395.564, 393.77, 391.433" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "S";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "157.747, 156.712, 155.218", \
+            "157.653, 156.799, 155.191", \
+            "157.677, 156.771, 155.222" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "S";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "176.681, 178.125, 178.201", \
+            "176.61, 178.069, 178.163", \
+            "176.59, 178.077, 178.172" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+    }
+    pin (Q_bar) {
+      direction : output;
+      function : "!S";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "Q";
+        sdf_cond : "(R & ~S)";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "(R * !S)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1222.92, 1979.16, 2858.5", \
+            "1219.4, 1975.08, 2854.69", \
+            "1212.72, 1961.21, 2841.86" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1262.25, 2165.7, 3299.01", \
+            "1262.25, 2165.7, 3299.06", \
+            "1262.33, 2165.7, 3299.01" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q";
+        sdf_cond : "(~R & ~S)";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "(!R * !S)";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1208.42, 1956.61, 2821.07", \
+            "1206.43, 1953.64, 2821.2", \
+            "1201.38, 1942.64, 2810.1" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1253.29, 2160.73, 3295.61", \
+            "1253.25, 2160.73, 3295.63", \
+            "1253.3, 2160.77, 3295.63" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "Q";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "105.788, 130.869, 160.305", \
+            "108.296, 133.321, 162.595", \
+            "117.154, 141.801, 170.682" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "71.4112, 124.107, 189.977", \
+            "71.4112, 124.093, 189.959", \
+            "71.41, 124.095, 189.959" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1222.92, 1979.16, 2858.5", \
+            "1219.4, 1975.08, 2854.69", \
+            "1212.72, 1961.21, 2841.86" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1262.25, 2165.7, 3299.01", \
+            "1262.25, 2165.7, 3299.06", \
+            "1262.33, 2165.7, 3299.01" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "R";
+        timing_sense : positive_unate;
+        timing_type : combinational_rise;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1012.12, 1417.02, 1834.88", \
+            "997.631, 1392.65, 1806.82", \
+            "984.686, 1367.04, 1778.1" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "731.175, 977.58, 1365", \
+            "731.571, 981.654, 1368.88", \
+            "732.119, 985.534, 1374.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "S";
+        sdf_cond : "R";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "R";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1234.92, 2029.23, 2905.6", \
+            "1222.66, 2009.96, 2883.06", \
+            "1210.1, 1988.12, 2858.98" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1884.99, 2618.63, 3736.73", \
+            "1875.5, 2616.02, 3735.69", \
+            "1859.51, 2612.22, 3735.5" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "S";
+        sdf_cond : "~R";
+        timing_sense : negative_unate;
+        timing_type : combinational_fall;
+        when : "!R";
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2118.36, 2840.02, 3661.17", \
+            "2104.25, 2816.93, 3634.4", \
+            "2090.99, 2791.63, 3607.44" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1369.25, 2240.12, 3377.26", \
+            "1368.58, 2238.91, 3376.96", \
+            "1368.79, 2240.16, 3376.41" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "S";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "70.4302, 138.761, 202.212", \
+            "74.502, 142.766, 206.254", \
+            "78.9225, 146.473, 210.077" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "112.06, 171.63, 249.537", \
+            "111.584, 171.563, 249.475", \
+            "107.031, 171.226, 249.366" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2118.36, 2840.02, 3661.17", \
+            "2104.25, 2816.93, 3634.4", \
+            "2090.99, 2791.63, 3607.44" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1369.25, 2240.12, 3377.26", \
+            "1368.58, 2238.91, 3376.96", \
+            "1368.79, 2240.16, 3376.41" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "R";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "157.747, 156.712, 155.218", \
+            "157.653, 156.799, 155.191", \
+            "157.677, 156.771, 155.222" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "R";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "176.681, 178.125, 178.201", \
+            "176.61, 178.069, 178.163", \
+            "176.59, 178.077, 178.172" \
+          );
+        }
+        fall_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "S";
+        when : "R";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "197.333, 194.808, 195.227", \
+            "192.432, 194.479, 195.153", \
+            "193.514, 195.299, 195.053" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "S";
+        when : "R";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "244.273, 249.282, 253.737", \
+            "244.248, 249.059, 253.446", \
+            "244.815, 249.356, 253.714" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "S";
+        when : "!R";
+        related_pg_pin : VDD;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "376.628, 372.256, 366.75", \
+            "376.544, 372.261, 366.732", \
+            "376.607, 372.294, 366.795" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "S";
+        when : "!R";
+        related_pg_pin : VSS;
+        rise_power (scalar) {
+          values ( \
+            "0" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "395.646, 393.808, 391.448", \
+            "395.572, 393.752, 391.407", \
+            "395.564, 393.77, 391.433" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "S";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "118.757, 121.188, 124.519", \
+            "118.348, 120.681, 124.111", \
+            "117.332, 119.527, 123.144" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "376.628, 372.256, 366.75", \
+            "376.544, 372.261, 366.732", \
+            "376.607, 372.294, 366.795" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "S";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "67.1637, 62.5892, 57.9172", \
+            "66.7006, 62.1118, 57.4411", \
+            "65.6379, 60.9574, 56.2774" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "395.646, 393.808, 391.448", \
+            "395.572, 393.752, 391.407", \
+            "395.564, 393.77, 391.433" \
+          );
+        }
+      }
+    }
+    pin (R) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.70002;
+      rise_capacitance : 2.70002;
+      rise_capacitance_range (2.39073, 2.8893);
+      fall_capacitance : 2.82516;
+      fall_capacitance_range (2.3294, 2.82516);
+      internal_power () {
+        when : "(!S * !Q * Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.69181e+04, 1.69181e+04, 1.69181e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.00742e+04, 2.00742e+04, 2.00742e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!S * !Q * Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.69182e+04, 1.69182e+04, 1.69182e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.00741e+04, 2.00741e+04, 2.00741e+04" \
+          );
+        }
+      }
+    }
+    pin (S) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.70002;
+      rise_capacitance : 2.70002;
+      rise_capacitance_range (2.39073, 2.8893);
+      fall_capacitance : 2.82516;
+      fall_capacitance_range (2.3294, 2.82516);
+      internal_power () {
+        when : "(!R * Q * !Q_bar)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.69181e+04, 1.69181e+04, 1.69181e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.00742e+04, 2.00742e+04, 2.00742e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!R * Q * !Q_bar)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.69182e+04, 1.69182e+04, 1.69182e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.00741e+04, 2.00741e+04, 2.00741e+04" \
+          );
+        }
+      }
+    }
+  }
+  cell (NAND2X1_psuedo) {
+    area : 3000;
+    cell_leakage_power : 11666.6;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 7563.33;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 7563.33;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 14549;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 14549;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 14108.1;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 11666.6;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Y) {
+      direction : output;
+      function : "(!A1) + (!A2)";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "A1";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "25.6248, 33.848, 43.2592", \
+            "29.1839, 36.7172, 45.464", \
+            "21.1042, 35.1191, 49.0388" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "15.9272, 31.8215, 51.6866", \
+            "15.9256, 31.8185, 51.6865", \
+            "37.8021, 58.2392, 75.0527" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1094.79, 2122.12, 3356.31", \
+            "1092.91, 2113.97, 3346.24", \
+            "1096.65, 2099.07, 3322.9" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1643.84, 3284.18, 5334.59", \
+            "1643.8, 3284.16, 5334.57", \
+            "1642.18, 3284.11, 5334.48" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A2";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "25.6248, 33.848, 43.2592", \
+            "29.1839, 36.7172, 45.464", \
+            "21.1042, 35.1191, 49.0388" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "15.9272, 31.8215, 51.6866", \
+            "15.9256, 31.8185, 51.6865", \
+            "37.8021, 58.2392, 75.0527" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1094.79, 2122.12, 3356.31", \
+            "1092.91, 2113.97, 3346.24", \
+            "1096.65, 2099.07, 3322.9" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1643.84, 3284.18, 5334.59", \
+            "1643.8, 3284.16, 5334.57", \
+            "1642.18, 3284.11, 5334.48" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "66.598, 71.5461, 78.5877", \
+            "66.0382, 71.425, 77.3783", \
+            "65.2791, 71.992, 76.8882" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "277.975, 279.41, 280.505", \
+            "277.968, 279.366, 280.476", \
+            "278.729, 280.177, 280.949" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "15.7446, 15.4031, 14.9193", \
+            "15.4022, 15.0714, 14.5991", \
+            "14.596, 14.2097, 13.7001" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "328.788, 336.223, 344.226", \
+            "328.946, 336.231, 344.21", \
+            "329.736, 336.545, 344.35" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "66.598, 71.5461, 78.5877", \
+            "66.0382, 71.425, 77.3783", \
+            "65.2791, 71.992, 76.8882" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "277.975, 279.41, 280.505", \
+            "277.968, 279.366, 280.476", \
+            "278.729, 280.177, 280.949" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "15.7446, 15.4031, 14.9193", \
+            "15.4022, 15.0714, 14.5991", \
+            "14.596, 14.2097, 13.7001" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "328.788, 336.223, 344.226", \
+            "328.946, 336.231, 344.21", \
+            "329.736, 336.545, 344.35" \
+          );
+        }
+      }
+    }
+    pin (A1) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.80217;
+      rise_capacitance : 2.80217;
+      rise_capacitance_range (2.62922, 2.90892);
+      fall_capacitance : 2.92355;
+      fall_capacitance_range (2.65424, 3.45019);
+      internal_power () {
+        when : "(!A2 * Y)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.58706e+04, 1.58706e+04, 1.58706e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.50279e+04, 1.50279e+04, 1.50279e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!A2 * Y)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.58707e+04, 1.58707e+04, 1.58707e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.50279e+04, 1.50279e+04, 1.50279e+04" \
+          );
+        }
+      }
+    }
+    pin (A2) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.80217;
+      rise_capacitance : 2.80217;
+      rise_capacitance_range (2.62922, 2.90892);
+      fall_capacitance : 2.92355;
+      fall_capacitance_range (2.65424, 3.45019);
+      internal_power () {
+        when : "(!A1 * Y)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.58706e+04, 1.58706e+04, 1.58706e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.50279e+04, 1.50279e+04, 1.50279e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!A1 * Y)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.58707e+04, 1.58707e+04, 1.58707e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.50279e+04, 1.50279e+04, 1.50279e+04" \
+          );
+        }
+      }
+    }
+  }
+  cell (NOR2X1_psuedo) {
+    area : 3000;
+    cell_leakage_power : 5793.14;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 2339.61;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 2339.61;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 3783.88;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 3783.88;
+      when : "(A1 * !A2 * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * !A2 * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 6251.2;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 6251.2;
+      when : "(!A1 * A2 * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * A2 * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 15802.6;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 5793.14;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Y) {
+      direction : output;
+      function : "(!A1 * !A2)";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "A1";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "45.0247, 69.1333, 97.7249", \
+            "47.7543, 71.5094, 99.9964", \
+            "47.7241, 74.6989, 102.225" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "27.6574, 59.5134, 100.493", \
+            "28.0043, 59.5586, 100.496", \
+            "44.765, 64.8822, 100.833" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1174.76, 1904.81, 2769.36", \
+            "1163.52, 1889.19, 2751.32", \
+            "1145.75, 1864, 2727.05" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1277.78, 2198.23, 3349.96", \
+            "1277.75, 2198.22, 3348.61", \
+            "1278.49, 2196.93, 3350.01" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A2";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "51.789, 78.378, 108.489", \
+            "53.7231, 79.5394, 109.154", \
+            "61.7153, 84.0931, 112.191" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "27.0724, 59.4432, 100.491", \
+            "27.0823, 59.4478, 100.492", \
+            "46.463, 59.9422, 100.529" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "586.536, 1411.82, 2346.01", \
+            "587.051, 1407.16, 2342.64", \
+            "594.006, 1391.46, 2320.71" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "568.438, 1475.45, 2611.41", \
+            "568.057, 1475.44, 2609.67", \
+            "568.055, 1475.44, 2609.67" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "81.9333, 84.7155, 88.5259", \
+            "81.5938, 84.5002, 88.1859", \
+            "85.7512, 83.496, 86.9933" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "75.9117, 77.7907, 75.3421", \
+            "73.4695, 73.4066, 76.1287", \
+            "73.4441, 74.5844, 75.1375" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "20.902, 19.9424, 18.732", \
+            "20.4992, 19.5486, 18.3412", \
+            "19.5224, 18.5569, 17.3484" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "134.267, 139.71, 145.277", \
+            "134.142, 139.506, 145.044", \
+            "134.379, 139.628, 145.257" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "64.8291, 67.9215, 71.4754", \
+            "64.4687, 67.5925, 71.1354", \
+            "63.5466, 66.6224, 70.1413" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "48.7064, 52.2208, 55.6039", \
+            "48.3722, 52.9673, 55.9308", \
+            "49.1899, 53.2294, 55.8987" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "20.489, 19.7453, 18.5814", \
+            "20.1151, 19.3962, 18.2436", \
+            "19.2078, 18.426, 17.2593" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "92.3668, 100.965, 108.561", \
+            "92.6522, 101.096, 108.765", \
+            "93.6725, 101.414, 108.983" \
+          );
+        }
+      }
+    }
+    pin (A1) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.7042;
+      rise_capacitance : 2.7042;
+      rise_capacitance_range (2.50443, 2.90166);
+      fall_capacitance : 2.89643;
+      fall_capacitance_range (2.48669, 3.49446);
+      internal_power () {
+        when : "(A2 * !Y)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.16511e+04, 1.16511e+04, 1.1651e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.25661e+04, 2.25661e+04, 2.25661e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(A2 * !Y)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.16514e+04, 1.16514e+04, 1.16514e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.25658e+04, 2.25658e+04, 2.25658e+04" \
+          );
+        }
+      }
+    }
+    pin (A2) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 1.7354;
+      rise_capacitance : 1.7354;
+      rise_capacitance_range (0.920715, 2.74765);
+      fall_capacitance : 1.76556;
+      fall_capacitance_range (0.883749, 3.0777);
+      internal_power () {
+        when : "(A1 * !Y)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.16513e+04, 1.16513e+04, 1.16513e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.24793e+04, 2.24793e+04, 2.24793e+04" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(A1 * !Y)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.16515e+04, 1.16515e+04, 1.16515e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.24791e+04, 2.24791e+04, 2.24791e+04" \
+          );
+        }
+      }
+    }
+  }
+
+
+
+
+cell (TSBUF) {
+  area : 3000;
+  cell_leakage_power : 5793.14;
+  pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+  }
+  leakage_power () {
+    value : 2286.79;
+    when : "!I !OE !Y";
+  }
+  leakage_power () {
+    value : 2286.79;
+    when : "!I !OE Y";
+  }
+  leakage_power () {
+    value : 1514.1;
+    when : "!I OE !Y";
+  }
+  leakage_power () {
+    value : 1533.2;
+    when : "I !OE !Y";
+  }
+  leakage_power () {
+    value : 1533.2;
+    when : "I !OE Y";
+  }
+  leakage_power () {
+    value : 5793.14;
+    when : "I OE Y";
+  }
+  pin(I) {
+    direction : input;
+    related_ground_pin : VSS;
+    related_power_pin : VDD;
+    capacitance : 2.68672;
+    rise_capacitance : 2.68672;
+    rise_capacitance_range (2.48422, 2.89142);
+    fall_capacitance : 2.84067;
+    fall_capacitance_range (2.47401, 3.3414);
+    internal_power () {
+      when : "!OE&Y";
+      rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.16511e+04, 1.16511e+04, 1.1651e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.25661e+04, 2.25661e+04, 2.25661e+04" \
+          );
+        }
+    }
+    internal_power () {
+      when : "!OE&!Y";
+      rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.16511e+04, 1.16511e+04, 1.1651e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.25661e+04, 2.25661e+04, 2.25661e+04" \
+          );
+        }
+    }
+  }
+  pin(OE) {
+    direction : input;
+    related_ground_pin : VSS;
+    related_power_pin : VDD;
+    max_transition : 5000;
+    capacitance : 2.68672;
+    rise_capacitance : 2.68672;
+    rise_capacitance_range (2.48422, 2.89142);
+    fall_capacitance : 2.84067;
+    fall_capacitance_range (2.47401, 3.3414);
+    internal_power () {
+      when : "I&Y";
+      rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.16513e+04, 1.16513e+04, 1.16513e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.34793e+04, 2.34793e+04, 2.34793e+04" \
+          );
+        }
+    }
+    internal_power () {
+      when : "!I&!Y";
+      rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "1.16513e+04, 1.16513e+04, 1.16513e+04" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "2.34793e+04, 2.34793e+04, 2.34793e+04" \
+          );
+        }
+    }
+  }
+  pin(Y) {
+    direction : output;
+    function : "I";
+    three_state : "(!OE)";
+    max_capacitance : 10;
+    timing () {
+      related_pin : "I";
+      timing_sense : positive_unate;
+      timing_type : combinational;
+      cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "45.0247, 69.1333, 97.7249", \
+            "47.7543, 71.5094, 99.9964", \
+            "47.7241, 74.6989, 102.225" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "27.6574, 59.5134, 100.493", \
+            "28.0043, 59.5586, 100.496", \
+            "44.765, 64.8822, 100.833" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1174.76, 1904.81, 2769.36", \
+            "1163.52, 1889.19, 2751.32", \
+            "1145.75, 1864, 2727.05" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1277.78, 2198.23, 3349.96", \
+            "1277.75, 2198.22, 3348.61", \
+            "1278.49, 2196.93, 3350.01" \
+          );
+        }
+    }
+    timing () {
+      related_pin : "OE";
+      timing_sense : positive_unate;
+      timing_type : three_state_enable;
+      cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "51.789, 78.378, 108.489", \
+            "53.7231, 79.5394, 109.154", \
+            "61.7153, 84.0931, 112.191" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "27.0724, 59.4432, 100.491", \
+            "27.0823, 59.4478, 100.492", \
+            "46.463, 59.9422, 100.529" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "586.536, 1411.82, 2346.01", \
+            "587.051, 1407.16, 2342.64", \
+            "594.006, 1391.46, 2320.71" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "568.438, 1475.45, 2611.41", \
+            "568.057, 1475.44, 2609.67", \
+            "568.055, 1475.44, 2609.67" \
+          );
+        }
+    }
+    timing () {
+      related_pin : "OE";
+      timing_sense : negative_unate;
+      timing_type : three_state_disable;
+      cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "45.0247, 69.1333, 97.7249", \
+            "47.7543, 71.5094, 99.9964", \
+            "47.7241, 74.6989, 102.225" \
+          );
+        }
+      rise_transition (scalar) {
+        values ( \
+          "0" \
+        );
+      }
+      cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1174.76, 1904.81, 2769.36", \
+            "1163.52, 1889.19, 2751.32", \
+            "1145.75, 1864, 2727.05" \
+          );
+      }
+      fall_transition (scalar) {
+        values ( \
+          "0" \
+        );
+      }
+    }
+    internal_power () {
+      related_pin : "I";
+      rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "20.902, 19.9424, 18.732", \
+            "20.4992, 19.5486, 18.3412", \
+            "19.5224, 18.5569, 17.3484" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "134.267, 139.71, 145.277", \
+            "134.142, 139.506, 145.044", \
+            "134.379, 139.628, 145.257" \
+          );
+        }
+    }
+    internal_power () {
+      related_pin : "OE";
+      rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "20.902, 19.9424, 18.732", \
+            "20.4992, 19.5486, 18.3412", \
+            "19.5224, 18.5569, 17.3484" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "134.267, 139.71, 145.277", \
+            "134.142, 139.506, 145.044", \
+            "134.379, 139.628, 145.257" \
+          );
+        }
+    }
+  }
+}
+cell (AND2X1_psuedo) {
+    area : 5000;
+    cell_leakage_power : 26637.8;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 5859.5;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 5859.5;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 11389.2;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 11389.2;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10987.6;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 9097;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Y) {
+      direction : output;
+      function : "(A1 * A2)";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "A1";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "42.6578, 53.8784, 65.4374", \
+            "48.3469, 58.3442, 69.1250", \
+            "35.2074, 53.1865, 70.8132" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "27.0908, 54.1242, 87.9178", \
+            "27.0945, 54.1243, 87.9248", \
+            "70.6762, 112.3910, 146.9208" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2110.5675, 4108.4913, 6523.2999", \
+            "2107.2339, 4093.5832, 6505.5986", \
+            "2113.5305, 4072.3632, 6469.1619" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "5017.5111, 10035.3154, 16293.8975", \
+            "5017.6037, 10024.9909, 16301.3052", \
+            "5022.9126, 10035.5160, 16301.3052" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A2";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "42.6578, 53.8784, 65.4374", \
+            "48.3469, 58.3442, 69.1250", \
+            "35.2074, 53.1865, 70.8132" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "27.0908, 54.1242, 87.9178", \
+            "27.0945, 54.1243, 87.9248", \
+            "70.6762, 112.3910, 146.9208" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2110.5675, 4108.4913, 6523.2999", \
+            "2107.2339, 4093.5832, 6505.5986", \
+            "2113.5305, 4072.3632, 6469.1619" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "5017.5111, 10035.3154, 16293.8975", \
+            "5017.6037, 10024.9909, 16301.3052", \
+            "5022.9126, 10035.5160, 16301.3052" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "138.8103, 150.6809, 164.5525", \
+            "138.7932, 150.5225, 164.4708", \
+            "137.0529, 148.5201, 161.5830" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "990.0784, 990.1255, 991.0110", \
+            "993.2876, 995.8433, 997.6315", \
+            "995.0452, 997.6079, 1002.0091" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "36.4975, 35.9691, 35.1900", \
+            "35.9614, 35.4682, 34.7054", \
+            "34.7156, 34.1737, 33.3907" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1127.5840, 1145.4583, 1151.3345", \
+            "1127.8703, 1148.8123, 1154.6211", \
+            "1129.4428, 1149.3780, 1154.8467" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "138.8103, 150.6809, 164.5525", \
+            "138.7932, 150.5225, 164.4708", \
+            "137.0529, 148.5201, 161.5830" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "990.0784, 990.1255, 991.0110", \
+            "993.2876, 995.8433, 997.6315", \
+            "995.0452, 997.6079, 1002.0091" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "36.4975, 35.9691, 35.1900", \
+            "35.9614, 35.4682, 34.7054", \
+            "34.7156, 34.1737, 33.3907" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1127.5840, 1145.4583, 1151.3345", \
+            "1127.8703, 1148.8123, 1154.6211", \
+            "1129.4428, 1149.3780, 1154.8467" \
+          );
+        }
+      }
+    }
+    pin (A1) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.78475;
+      rise_capacitance : 2.78475;
+      rise_capacitance_range (2.61237, 2.90201);
+      fall_capacitance : 2.86724;
+      fall_capacitance_range (2.62532, 3.26923);
+      internal_power () {
+        when : "(!A2 * !Y)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "24429.1894, 24429.1894, 24429.1894" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "24741.0134, 24741.0134, 24741.0134" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!A2 * !Y)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "24429.1894, 24429.1894, 24429.1894" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "24741.0134, 24741.0134, 24741.0134" \
+          );
+        }
+      }
+    }
+    pin (A2) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.78475;
+      rise_capacitance : 2.78475;
+      rise_capacitance_range (2.61237, 2.90201);
+      fall_capacitance : 2.86724;
+      fall_capacitance_range (2.62532, 3.26923);
+      internal_power () {
+        when : "(!A1 * !Y)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "24429.1894, 24429.1894, 24429.1894" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "24741.0134, 24741.0134, 24741.0134" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(!A1 * !Y)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "24429.1894, 24429.1894, 24429.1894" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "24741.0134, 24741.0134, 24741.0134" \
+          );
+        }
+      }
+    }
+  }
+  cell (OR2X1_psuedo) {
+    area : 5000;
+    cell_leakage_power : 28472.5;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 5435.61;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 5435.6;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10598.2;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10598.2;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10208.9;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 8455.3;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Y) {
+      direction : output;
+      function : "(A1) + (A2)";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "A1";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "27.7739, 34.4918, 41.0252", \
+            "31.4728, 37.4236, 43.4426", \
+            "22.9005, 33.2851, 43.2823" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "17.7320, 35.4290, 57.5463", \
+            "17.7331, 35.4268, 57.5517", \
+            "48.0429, 77.8914, 104.1236" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1487.9859, 2901.6033, 4614.1501", \
+            "1485.7624, 2890.8599, 4602.6392", \
+            "1487.9169, 2878.8472, 4580.8275" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "7973.4302, 15880.9827, 25909.0100", \
+            "7956.5024, 15940.4643, 25901.9263", \
+            "7977.4303, 15949.4231, 25904.5306" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A2";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "27.7739, 34.4918, 41.0252", \
+            "31.4728, 37.4236, 43.4426", \
+            "22.9005, 33.2851, 43.2823" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "17.7320, 35.4290, 57.5463", \
+            "17.7331, 35.4268, 57.5517", \
+            "48.0429, 77.8914, 104.1236" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1487.9859, 2901.6033, 4614.1501", \
+            "1485.7624, 2890.8599, 4602.6392", \
+            "1487.9169, 2878.8472, 4580.8275" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "7973.4302, 15880.9827, 25909.0100", \
+            "7956.5024, 15940.4643, 25901.9263", \
+            "7977.4303, 15949.4231, 25904.5306" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "18490.6759, 36828.5790, 60083.9407", \
+            "18451.4198, 36966.5192, 60067.5136", \
+            "18499.9526, 36987.2947, 60073.5531" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "710.2735, 710.3073, 710.9429", \
+            "712.5759, 714.4093, 715.6921", \
+            "713.8369, 715.6752, 718.8327" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "26.1831, 25.8039, 25.2451", \
+            "25.7985, 25.4446, 24.8973", \
+            "24.9046, 24.5159, 23.9543" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "808.9190, 821.7418, 825.9573", \
+            "809.1243, 824.1479, 828.3151", \
+            "810.2524, 824.5536, 828.4770" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "18490.6759, 36828.5790, 60083.9407", \
+            "18451.4198, 36966.5192, 60067.5136", \
+            "18499.9526, 36987.2947, 60073.5531" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "710.2735, 710.3073, 710.9429", \
+            "712.5759, 714.4093, 715.6921", \
+            "713.8369, 715.6752, 718.8327" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "26.1831, 25.8039, 25.2451", \
+            "25.7985, 25.4446, 24.8973", \
+            "24.9046, 24.5159, 23.9543" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "808.9190, 821.7418, 825.9573", \
+            "809.1243, 824.1479, 828.3151", \
+            "810.2524, 824.5536, 828.4770" \
+          );
+        }
+      }
+    }
+    pin (A1) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.78475;
+      rise_capacitance : 2.78475;
+      rise_capacitance_range (2.61237, 2.90201);
+      fall_capacitance : 2.86724;
+      fall_capacitance_range (2.62532, 3.26923);
+      internal_power () {
+        when : "(A2 * Y)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "17525.2880, 17525.2880, 17525.2880" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "17748.9879, 17748.9879, 17748.9879" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(A2 * Y)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "17525.2880, 17525.2880, 17525.2880" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "17748.9879, 17748.9879, 17748.9879" \
+          );
+        }
+      }
+    }
+    pin (A2) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.78475;
+      rise_capacitance : 2.78475;
+      rise_capacitance_range (2.61237, 2.90201);
+      fall_capacitance : 2.86724;
+      fall_capacitance_range (2.62532, 3.26923);
+      internal_power () {
+        when : "(A1 * Y)";
+        related_pg_pin : VDD;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "17525.2880, 17525.2880, 17525.2880" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "17748.9879, 17748.9879, 17748.9879" \
+          );
+        }
+      }
+      internal_power () {
+        when : "(A1 * Y)";
+        related_pg_pin : VSS;
+        rise_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "17525.2880, 17525.2880, 17525.2880" \
+          );
+        }
+        fall_power (passive_powerX1_3x1) {
+          index_1 ("10, 20, 50");
+          values ( \
+            "17748.9879, 17748.9879, 17748.9879" \
+          );
+        }
+      }
+    }
+  }
+  cell (XNOR2X1_psuedo) {
+    area : 14000;
+    cell_leakage_power : 40851.8;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 5435.61;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 5435.6;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10598.2;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10598.2;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10208.9;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 8455.3;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Y) {
+      direction : output;
+      function : "(A1 * A2) + (!A1 * !A2)";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "A1";
+        sdf_cond : "A2";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        when : "A2";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "58.8154, 73.0416, 86.8768", \
+            "66.6483, 79.2499, 91.9962", \
+            "48.4952, 70.4863, 91.6566" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "37.5504, 75.0261, 121.8629", \
+            "37.5522, 75.0215, 121.8744", \
+            "101.7380, 164.9463, 220.4968" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "3151.0289, 6144.5718, 9771.1415", \
+            "3146.3202, 6121.8208, 9746.7654", \
+            "3150.8830, 6096.3823, 9700.5761" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "15946.8604, 31761.9652, 51818.0200", \
+            "15913.0048, 31880.9287, 51803.8527", \
+            "15954.8608, 31898.8461, 51809.0612" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A1";
+        sdf_cond : "~A2";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        when : "!A2";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "58.8154, 73.0416, 86.8768", \
+            "66.6483, 79.2499, 91.9962", \
+            "48.4952, 70.4863, 91.6566" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "37.5504, 75.0261, 121.8629", \
+            "37.5522, 75.0215, 121.8744", \
+            "101.7380, 164.9463, 220.4968" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "3151.0289, 6144.5718, 9771.1415", \
+            "3146.3202, 6121.8208, 9746.7654", \
+            "3150.8830, 6096.3823, 9700.5761" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "15946.8604, 31761.9652, 51818.0200", \
+            "15913.0048, 31880.9287, 51803.8527", \
+            "15954.8608, 31898.8461, 51809.0612" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A2";
+        sdf_cond : "A1";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        when : "A1";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "58.8154, 73.0416, 86.8768", \
+            "66.6483, 79.2499, 91.9962", \
+            "48.4952, 70.4863, 91.6566" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "37.5504, 75.0261, 121.8629", \
+            "37.5522, 75.0215, 121.8744", \
+            "101.7380, 164.9463, 220.4968" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "3151.0289, 6144.5718, 9771.1415", \
+            "3146.3202, 6121.8208, 9746.7654", \
+            "3150.8830, 6096.3823, 9700.5761" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "15946.8604, 31761.9652, 51818.0200", \
+            "15913.0048, 31880.9287, 51803.8527", \
+            "15954.8608, 31898.8461, 51809.0612" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A2";
+        sdf_cond : "~A1";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        when : "!A1";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "58.8154, 73.0416, 86.8768", \
+            "66.6483, 79.2499, 91.9962", \
+            "48.4952, 70.4863, 91.6566" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "37.5504, 75.0261, 121.8629", \
+            "37.5522, 75.0215, 121.8744", \
+            "101.7380, 164.9463, 220.4968" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "3151.0289, 6144.5718, 9771.1415", \
+            "3146.3202, 6121.8208, 9746.7654", \
+            "3150.8830, 6096.3823, 9700.5761" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "15946.8604, 31761.9652, 51818.0200", \
+            "15913.0048, 31880.9287, 51803.8527", \
+            "15954.8608, 31898.8461, 51809.0612" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        when : "A2";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "190.8643, 207.1861, 226.2594", \
+            "190.8407, 206.9682, 226.1476", \
+            "188.4475, 204.2153, 222.1766" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1420.5472, 1420.6148, 1421.8855", \
+            "1425.1515, 1428.8187, 1431.3842", \
+            "1427.6736, 1431.3505, 1437.6652" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        when : "A2";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "52.3661, 51.6080, 50.4899", \
+            "51.5969, 50.8891, 49.7949", \
+            "49.8092, 49.0317, 47.9087" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1617.8379, 1643.4836, 1651.9147", \
+            "1618.2484, 1648.2958, 1656.6302", \
+            "1620.5048, 1649.1076, 1656.9539" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        when : "!A2";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "190.8643, 207.1861, 226.2594", \
+            "190.8407, 206.9682, 226.1476", \
+            "188.4475, 204.2153, 222.1766" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1420.5472, 1420.6148, 1421.8855", \
+            "1425.1515, 1428.8187, 1431.3842", \
+            "1427.6736, 1431.3505, 1437.6652" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        when : "!A2";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "52.3661, 51.6080, 50.4899", \
+            "51.5969, 50.8891, 49.7949", \
+            "49.8092, 49.0317, 47.9087" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1617.8379, 1643.4836, 1651.9147", \
+            "1618.2484, 1648.2958, 1656.6302", \
+            "1620.5048, 1649.1076, 1656.9539" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        when : "A1";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "190.8643, 207.1861, 226.2594", \
+            "190.8407, 206.9682, 226.1476", \
+            "188.4475, 204.2153, 222.1766" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1420.5472, 1420.6148, 1421.8855", \
+            "1425.1515, 1428.8187, 1431.3842", \
+            "1427.6736, 1431.3505, 1437.6652" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        when : "A1";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "52.3661, 51.6080, 50.4899", \
+            "51.5969, 50.8891, 49.7949", \
+            "49.8092, 49.0317, 47.9087" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1617.8379, 1643.4836, 1651.9147", \
+            "1618.2484, 1648.2958, 1656.6302", \
+            "1620.5048, 1649.1076, 1656.9539" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        when : "!A1";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "190.8643, 207.1861, 226.2594", \
+            "190.8407, 206.9682, 226.1476", \
+            "188.4475, 204.2153, 222.1766" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1420.5472, 1420.6148, 1421.8855", \
+            "1425.1515, 1428.8187, 1431.3842", \
+            "1427.6736, 1431.3505, 1437.6652" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        when : "!A1";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "52.3661, 51.6080, 50.4899", \
+            "51.5969, 50.8891, 49.7949", \
+            "49.8092, 49.0317, 47.9087" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1617.8379, 1643.4836, 1651.9147", \
+            "1618.2484, 1648.2958, 1656.6302", \
+            "1620.5048, 1649.1076, 1656.9539" \
+          );
+        }
+      }
+    }
+    pin (A1) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.78475;
+      rise_capacitance : 2.78475;
+      rise_capacitance_range (2.61237, 2.90201);
+      fall_capacitance : 2.86724;
+      fall_capacitance_range (2.62532, 3.26923);
+    }
+    pin (A2) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.78475;
+      rise_capacitance : 2.78475;
+      rise_capacitance_range (2.61237, 2.90201);
+      fall_capacitance : 2.86724;
+      fall_capacitance_range (2.62532, 3.26923);
+    }
+  }
+  cell (XOR2X1_psuedo) {
+    area : 12000;
+    cell_leakage_power : 54469.2;
+    pg_pin (VDD) {
+      pg_type : primary_power;
+      voltage_name : "VDD";
+    }
+    pg_pin (VSS) {
+      pg_type : primary_ground;
+      voltage_name : "VSS";
+    }
+    leakage_power () {
+      value : 5435.61;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 5435.6;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * A2 * !Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10598.2;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10598.2;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 10208.9;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      when : "(!A1 * !A2 * Y)";
+      related_pg_pin : VSS;
+    }
+    leakage_power () {
+      value : 8455.3;
+      related_pg_pin : VDD;
+    }
+    leakage_power () {
+      value : 0;
+      related_pg_pin : VSS;
+    }
+    pin (Y) {
+      direction : output;
+      function : "(A1 * !A2) + (!A1 * A2)";
+      power_down_function : "(!VDD) + (VSS)";
+      related_ground_pin : VSS;
+      related_power_pin : VDD;
+      max_capacitance : 10;
+      timing () {
+        related_pin : "A1";
+        sdf_cond : "~A2";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        when : "!A2";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "78.4205, 97.3888, 115.8357", \
+            "88.8644, 105.6667, 122.6615", \
+            "64.6602, 93.9818, 122.2088" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "50.0671, 100.0347, 162.4837", \
+            "50.0697, 100.0286, 162.4991", \
+            "135.6507, 219.9284, 293.9957" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "4201.3717, 8192.7624, 13028.1887", \
+            "4195.0937, 8162.4277, 12995.6873", \
+            "4201.1773, 8128.5097, 12934.1013" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "21262.4806, 42349.2871, 69090.6933", \
+            "21217.3398, 42507.9048, 69071.8036", \
+            "21273.1477, 42531.7948, 69078.7483" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A1";
+        sdf_cond : "A2";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        when : "A2";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "78.4205, 97.3888, 115.8357", \
+            "88.8644, 105.6667, 122.6615", \
+            "64.6602, 93.9818, 122.2088" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "50.0671, 100.0347, 162.4837", \
+            "50.0697, 100.0286, 162.4991", \
+            "135.6507, 219.9284, 293.9957" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "4201.3717, 8192.7624, 13028.1887", \
+            "4195.0937, 8162.4277, 12995.6873", \
+            "4201.1773, 8128.5097, 12934.1013" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "21262.4806, 42349.2871, 69090.6933", \
+            "21217.3398, 42507.9048, 69071.8036", \
+            "21273.1477, 42531.7948, 69078.7483" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A2";
+        sdf_cond : "~A1";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+        when : "!A1";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "78.4205, 97.3888, 115.8357", \
+            "88.8644, 105.6667, 122.6615", \
+            "64.6602, 93.9818, 122.2088" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "50.0671, 100.0347, 162.4837", \
+            "50.0697, 100.0286, 162.4991", \
+            "135.6507, 219.9284, 293.9957" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "4201.3717, 8192.7624, 13028.1887", \
+            "4195.0937, 8162.4277, 12995.6873", \
+            "4201.1773, 8128.5097, 12934.1013" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "21262.4806, 42349.2871, 69090.6933", \
+            "21217.3398, 42507.9048, 69071.8036", \
+            "21273.1477, 42531.7948, 69078.7483" \
+          );
+        }
+      }
+      timing () {
+        related_pin : "A2";
+        sdf_cond : "A1";
+        timing_sense : negative_unate;
+        timing_type : combinational;
+        when : "A1";
+        cell_rise (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "78.4205, 97.3888, 115.8357", \
+            "88.8644, 105.6667, 122.6615", \
+            "64.6602, 93.9818, 122.2088" \
+          );
+        }
+        rise_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "50.0671, 100.0347, 162.4837", \
+            "50.0697, 100.0286, 162.4991", \
+            "135.6507, 219.9284, 293.9957" \
+          );
+        }
+        cell_fall (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "4201.3717, 8192.7624, 13028.1887", \
+            "4195.0937, 8162.4277, 12995.6873", \
+            "4201.1773, 8128.5097, 12934.1013" \
+          );
+        }
+        fall_transition (delayX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "21262.4806, 42349.2871, 69090.6933", \
+            "21217.3398, 42507.9048, 69071.8036", \
+            "21273.1477, 42531.7948, 69078.7483" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        when : "A2";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "254.4858, 276.2481, 301.6794", \
+            "254.4542, 275.9577, 301.5299", \
+            "251.2634, 272.2871, 296.2354" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1894.0627, 1894.1530, 1895.8473", \
+            "1900.2022, 1905.0917, 1908.5124", \
+            "1903.5647, 1908.4673, 1916.8871" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        when : "A2";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "69.8215, 68.8107, 67.3198", \
+            "68.7959, 67.8521, 66.3929", \
+            "66.4124, 65.3759, 63.8782" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2157.1171, 2191.3114, 2202.5529", \
+            "2157.6646, 2197.7277, 2208.8403", \
+            "2160.6731, 2198.8100, 2209.2718" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        when : "!A2";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "254.4858, 276.2481, 301.6794", \
+            "254.4542, 275.9577, 301.5299", \
+            "251.2634, 272.2871, 296.2354" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1894.0627, 1894.1530, 1895.8473", \
+            "1900.2022, 1905.0917, 1908.5124", \
+            "1903.5647, 1908.4673, 1916.8871" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A1";
+        when : "!A2";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "69.8215, 68.8107, 67.3198", \
+            "68.7959, 67.8521, 66.3929", \
+            "66.4124, 65.3759, 63.8782" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2157.1171, 2191.3114, 2202.5529", \
+            "2157.6646, 2197.7277, 2208.8403", \
+            "2160.6731, 2198.8100, 2209.2718" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        when : "A1";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "254.4858, 276.2481, 301.6794", \
+            "254.4542, 275.9577, 301.5299", \
+            "251.2634, 272.2871, 296.2354" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1894.0627, 1894.1530, 1895.8473", \
+            "1900.2022, 1905.0917, 1908.5124", \
+            "1903.5647, 1908.4673, 1916.8871" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        when : "A1";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "69.8215, 68.8107, 67.3198", \
+            "68.7959, 67.8521, 66.3929", \
+            "66.4124, 65.3759, 63.8782" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2157.1171, 2191.3114, 2202.5529", \
+            "2157.6646, 2197.7277, 2208.8403", \
+            "2160.6731, 2198.8100, 2209.2718" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        when : "!A1";
+        related_pg_pin : VDD;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "254.4858, 276.2481, 301.6794", \
+            "254.4542, 275.9577, 301.5299", \
+            "251.2634, 272.2871, 296.2354" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "1894.0627, 1894.1530, 1895.8473", \
+            "1900.2022, 1905.0917, 1908.5124", \
+            "1903.5647, 1908.4673, 1916.8871" \
+          );
+        }
+      }
+      internal_power () {
+        related_pin : "A2";
+        when : "!A1";
+        related_pg_pin : VSS;
+        rise_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "69.8215, 68.8107, 67.3198", \
+            "68.7959, 67.8521, 66.3929", \
+            "66.4124, 65.3759, 63.8782" \
+          );
+        }
+        fall_power (powerX1_3x3) {
+          index_1 ("10, 20, 50");
+          index_2 ("1, 5, 10");
+          values ( \
+            "2157.1171, 2191.3114, 2202.5529", \
+            "2157.6646, 2197.7277, 2208.8403", \
+            "2160.6731, 2198.8100, 2209.2718" \
+          );
+        }
+      }
+    }
+    pin (A1) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.78475;
+      rise_capacitance : 2.78475;
+      rise_capacitance_range (2.61237, 2.90201);
+      fall_capacitance : 2.86724;
+      fall_capacitance_range (2.62532, 3.26923);
+    }
+    pin (A2) {
+      direction : input;
+      related_power_pin : VDD;
+      max_transition : 50;
+      capacitance : 2.78475;
+      rise_capacitance : 2.78475;
+      rise_capacitance_range (2.61237, 2.90201);
+      fall_capacitance : 2.86724;
+      fall_capacitance_range (2.62532, 3.26923);
+    }
+  }
+
+}
